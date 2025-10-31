@@ -52,6 +52,17 @@ const plugin: JupyterFrontEndPlugin<void> = {
     loadSettings(settingRegistry);
 
     manager.register({
+      name: 'Test Palatte',
+      isLight: true,
+      load: () => {
+        palettes.setColorsLatte();
+        palettes.setConfigColors(brandColor, accentColor);
+        return manager.loadCSS(style);
+      },
+      unload: () => Promise.resolve(undefined)
+    });
+
+    manager.register({
       name: 'Catppuccin Latte',
       isLight: true,
       load: () => {
